@@ -99,7 +99,9 @@ If !ErrorLevel
    
   ; returns to desktop
   Send, {LWin Down}d{LWin Up}
+  
   Sleep, 1000
+  
   ; returns to game
   Send, {LWin Down}d{LWin Up}
    
