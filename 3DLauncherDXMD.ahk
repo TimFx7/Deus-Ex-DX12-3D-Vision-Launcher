@@ -23,7 +23,6 @@ if !FileExist("Start3D.exe") or !FileExist("QRes.exe") or !FileExist("wait.jps")
 Process,Exist, Start3D.exe
 If !ErrorLevel
 {
-      
         try
 	{
 		Run, "Start3D.exe"
