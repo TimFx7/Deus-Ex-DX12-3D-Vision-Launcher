@@ -83,13 +83,13 @@ If !ErrorLevel
   WinWait, NVIDIA 3D Vision , , 25 ;  If the 3D Vision Photo viewer is not opened in time, the 3D cannot be activated.
 
 
-	   if ErrorLevel
-	   {
-			MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, 3D Vision Photo viewer failed to initialize as it should.
-			Runwait, taskkill /im DXMD.exe /f, ,Hide
-	        Runwait, taskkill /im Start3D.exe /f, ,Hide			
-			ExitApp  			
-	   }
+   if ErrorLevel
+   {
+	MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, 3D Vision Photo viewer failed to initialize as it should.
+	Runwait, taskkill /im DXMD.exe /f, ,Hide
+	Runwait, taskkill /im Start3D.exe /f, ,Hide			
+	ExitApp  			
+   }
 
   Sleep, 8000
   WinHide NVIDIA 3D Vision ;To Auto hide 3D Vision Photo viewer.
