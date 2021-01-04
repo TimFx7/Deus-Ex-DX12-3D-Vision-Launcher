@@ -24,14 +24,14 @@ Process,Exist, Start3D.exe
 If !ErrorLevel
 {
       
-    try
+        try
 	{
-	    Run, "Start3D.exe"
+		Run, "Start3D.exe"
 	}
 	catch
 	{
-       MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Start3D.exe could not be started, file may be corrupted.
-       exitApp 
+		MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Start3D.exe could not be started, file may be corrupted.
+		exitApp 
 	}   
 
    regwrite, REG_DWORD, HKEY_CURRENT_USER\SOFTWARE\Eidos Montreal\Deus Ex: MD\Graphics, Fullscreen, 1
@@ -65,21 +65,18 @@ If !ErrorLevel
    
    if ErrorLevel
    {
-		MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, There is a problem. Deus Ex or Steam started too late. Please try again now.
-		Runwait, taskkill /im DXMD.exe /f, ,Hide
-	    Runwait, taskkill /im Start3D.exe /f, ,Hide		
-		ExitApp  
+	MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, There is a problem. Deus Ex or Steam started too late. Please try again now.
+	Runwait, taskkill /im DXMD.exe /f, ,Hide
+	Runwait, taskkill /im Start3D.exe /f, ,Hide		
+	ExitApp  
    }
 
   
-  Sleep, 5000
-
-  
+  Sleep, 5000  
   Runwait, QRes.exe /r:120, ,Hide
   Sleep, 2000   
   
-  Runwait, "%prog32%\NVIDIA Corporation\3D Vision\nvstlink.exe" /enable  
-  
+  Runwait, "%prog32%\NVIDIA Corporation\3D Vision\nvstlink.exe" /enable    
   Sleep, 8000  
 
   Run, "%prog32%\NVIDIA Corporation\3D Vision\nvstview.exe" "wait.jps"
@@ -95,9 +92,6 @@ If !ErrorLevel
 			ExitApp  			
 	   }
 
- 
-
-  
   Sleep, 8000
   WinHide NVIDIA 3D Vision ;To Auto hide 3D Vision Photo viewer.
 
@@ -111,25 +105,21 @@ If !ErrorLevel
    
   WinActivate    
   Winrestore
-
   
-		IfWinNotExist, Deus Ex: Mankind Divided v1.19 build
-		{
-			MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Deus Ex could not be started properly. Note: RTSS Custom Direct3D Support must be turned off. Please try again.
-			Runwait, taskkill /im DXMD.exe /f, ,Hide
-			Runwait, taskkill /im Start3D.exe /f, ,Hide		
-			Runwait, taskkill /im nvstview.exe /f, ,Hide   ;3D Vision Photo viewer turn off			
-			ExitApp  			
-		}
+	IfWinNotExist, Deus Ex: Mankind Divided v1.19 build
+	{
+		MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Deus Ex could not be started properly. Note: RTSS Custom Direct3D Support must be turned off. Please try again.
+		Runwait, taskkill /im DXMD.exe /f, ,Hide
+		Runwait, taskkill /im Start3D.exe /f, ,Hide		
+		Runwait, taskkill /im nvstview.exe /f, ,Hide   ;3D Vision Photo viewer turn off			
+		ExitApp  			
+	}
 		
-
-  
   WinWaitClose  ; Wait for the exact "Deus Ex" window found by WinWait to be closed.
   Runwait, taskkill /im nvstview.exe /f, ,Hide   ;3D Vision Photo viewer turn off
 
   ExitApp 
-
-
+  
 }
 else  ;If start3D.exe is started, restarting 3DLauncher.exe is prevented.
 {
