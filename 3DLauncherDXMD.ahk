@@ -13,11 +13,11 @@ SetTitleMatchMode, 2
 EnvGet, prog32, ProgramFiles(x86)
 
 
-	if !FileExist("Start3D.exe") or !FileExist("QRes.exe") or !FileExist("wait.jps") or !FileExist("splash.jpg")
-	{
-		MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Some files may be missing. Be sure to copy the files named Start3D.exe , QRES.exe , WAIT.jps , SPLASH.jpg to the game folder. 
-		exitApp 
-	}
+if !FileExist("Start3D.exe") or !FileExist("QRes.exe") or !FileExist("wait.jps") or !FileExist("splash.jpg")
+{
+	MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Some files may be missing. Be sure to copy the files named Start3D.exe , QRES.exe , WAIT.jps , SPLASH.jpg to the game folder. 
+	exitApp 
+}
 
 
 Process,Exist, Start3D.exe
