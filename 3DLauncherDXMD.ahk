@@ -107,14 +107,14 @@ If !ErrorLevel
   WinActivate    
   Winrestore
   
-IfWinNotExist, Deus Ex: Mankind Divided v1.19 build
-{
-	MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Deus Ex could not be started properly. Note: RTSS Custom Direct3D Support must be turned off. Please try again.
-	Runwait, taskkill /im DXMD.exe /f, ,Hide
-	Runwait, taskkill /im Start3D.exe /f, ,Hide		
-	Runwait, taskkill /im nvstview.exe /f, ,Hide   ;3D Vision Photo viewer turn off			
-	ExitApp  			
-}
+	IfWinNotExist, Deus Ex: Mankind Divided v1.19 build
+	{
+		MsgBox,262144 ,	Failed to initialize 3D Vision for DX12, Deus Ex could not be started properly. Note: RTSS Custom Direct3D Support must be turned off. Please try again.
+		Runwait, taskkill /im DXMD.exe /f, ,Hide
+		Runwait, taskkill /im Start3D.exe /f, ,Hide		
+		Runwait, taskkill /im nvstview.exe /f, ,Hide   ;3D Vision Photo viewer turn off			
+		ExitApp  			
+	}
 		
   WinWaitClose  ; Wait for the exact "Deus Ex" window found by WinWait to be closed.
   Runwait, taskkill /im nvstview.exe /f, ,Hide   ;3D Vision Photo viewer turn off
